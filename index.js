@@ -1,4 +1,5 @@
 
+// TODO events double fire 
 
 const MINUTES = 0
 const SECONDS = 10
@@ -43,7 +44,7 @@ const TimeEvent = class {
 
 // Global list of TimeEvents
 const timeEvents = [
-	new TimeEvent(100, (timeLeft) => {
+	new TimeEvent(1000, (timeLeft) => {
 		console.log(`Time left: ${timeLeft}`)
 	})
 ]
