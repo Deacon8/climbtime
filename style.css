@@ -1,0 +1,11 @@
+#timer {
+	font-size: 50vh;
+
+	padding: 0;
+	margin: 0;
+}
+
+#buttons {
+	width: 100%;
+	text-align: center;
+}
