@@ -11,6 +11,7 @@ function start()
 	currentTime = startTime;
 	timer.innerHTML = 5-(currentTime/1000-startTime/1000);
 	setInterval(run(), 1000);
+	console.log("ssss");
 }
 
 function stop()
