@@ -1,12 +1,14 @@
 var start = document.getElementById("start");
 var stop = document.getElementById("stop");
 var timer = document.getElementById("timer");
-const d = Date();
+const date = Date();
+var startTime;
 var currentTime;
 
 function start()
 {	
-	currentTime = d.getTime();
+	startTime = date.getTime();
+	currentTime = startTime;
 	timer.innerHTML = ;
 	
 	
