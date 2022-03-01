@@ -1,5 +1,6 @@
  
 // The timer isn't 100% accurate, can swing +/-4ms
+// TODO loses time somehow?
 
 const MINUTES = 0
 const SECONDS = 10
@@ -115,8 +116,7 @@ const main = () => {
 			console.log(`Resetting timer at ${Date.now()}ms`)
 
 			return
-		}
-		
+		}	
 
 		left = timeLeft()
 				
