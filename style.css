@@ -1,3 +1,7 @@
+:root {
+	font-family: sans-serif;
+}
+
 #timer {
 	font-size: 50vh;
 
@@ -8,4 +12,8 @@
 #buttons {
 	width: 100%;
 	text-align: center;
+}
+
+button {
+	font-size: 20px;
 }
