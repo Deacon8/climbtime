@@ -1,5 +1,5 @@
-
-// TODO events double fire 
+ 
+// The timer isn't 100% accurate, can swing +/-4ms
 
 const MINUTES = 0
 const SECONDS = 10
@@ -100,19 +100,25 @@ const main = () => {
 			}
 		}
 
-		// Check that the timer hasn't expired
-		if (timeLeft() <= 0) {
-			// Automatically restart
-			start()
-		}
-
-		const left = timeLeft()
+		let left = timeLeft()
 
 		// Is slow but works enough
 		timeEvents.forEach(timeEvent => {
 			timeEvent.fire(left)
 		})
-		
+
+
+		// Check that the timer hasn't expired
+		if (left <= 0) {
+			// Automatically restart
+			start()
+
+			console.log(`Resetting timer at ${Date.now()}ms`)
+		}
+
+		left = timeLeft()
+
+				
 		// Format as date to get helper functions
 		const dateLeft = new Date(left)
 
