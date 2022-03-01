@@ -1,26 +1,43 @@
 var start = document.getElementById("start");
 var stop = document.getElementById("stop");
 var timer = document.getElementById("timer");
-const date = Date();
 var startTime;
 var currentTime;
+var minutes = 5;
+var seconds = 0;
 
-function start()
+function starte()
 {	
-	startTime = date.getTime();
+	startTime = new Date().getTime();
 	currentTime = startTime;
-	timer.innerHTML = 5-(currentTime/1000-startTime/1000);
-	setInterval(run(), 1000);
-	console.log("ssss");
+	timer.innerHTML = "5:00";
+	minutes = 4;
+	seconds = 59;
+	setInterval(run, 1000);
 }
 
-function stop()
-{
-	
+function stope()
+{	
+	console.log("stp[");
+	clearInterval();
 }
 
 function run()
 {	
-	currentTime = date.getTime();
-	timer.innerHTML = 5-(currentTime/1000-startTime/1000);
+	if(seconds < 10)
+	{
+		timer.innerHTML = minutes + ":" + "0" + seconds;//(seconds.toFixed(2));
+	}
+	timer.innerHTML = minutes + ":" + seconds;//(seconds.toFixed(2));
+	seconds--;
+	if(seconds < 1)
+	{
+		minutes--;
+		seconds = 59;
+	}
+	if(minutes < 0)
+	{
+		minutes = 5;
+		seconds = 0;
+	}
 }
