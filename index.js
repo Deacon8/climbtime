@@ -107,7 +107,6 @@ const main = () => {
 			timeEvent.fire(left)
 		})
 
-
 		// Check that the timer hasn't expired
 		if (left <= 0) {
 			// Automatically restart
@@ -117,7 +116,6 @@ const main = () => {
 		}
 
 		left = timeLeft()
-
 				
 		// Format as date to get helper functions
 		const dateLeft = new Date(left)
