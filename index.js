@@ -9,12 +9,17 @@ function start()
 {	
 	startTime = date.getTime();
 	currentTime = startTime;
-	timer.innerHTML = ;
-	
-	
+	timer.innerHTML = 5-(currentTime/1000-startTime/1000);
+	setInterval(run(), 1000);
 }
 
 function stop()
 {
 	
+}
+
+function run()
+{	
+	currentTime = date.getTime();
+	timer.innerHTML = 5-(currentTime/1000-startTime/1000);
 }
