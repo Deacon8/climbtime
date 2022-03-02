@@ -45,12 +45,16 @@ const TimeEvent = class {
 
 // Global list of TimeEvents
 const timeEvents = [
+	/*
+	// Example of TimeEvent working near 1000ms
 	new TimeEvent(1000, (timeLeft) => {
 		console.log(`Time left: ${timeLeft}`)
 	}),
+
+	// Example of TimeEvent working near 0ms
 	new TimeEvent(0, () => {
 		console.log("About to reset")
-	})
+	})*/
 ]
 
 const main = () => {
