@@ -144,4 +144,4 @@ const main = () => {
 // Very precise timing because why not
 setTimeout(() => {
 	main()
-}, new Date(Date.now()).getMilliseconds % 200)
+}, new Date(Date.now()).getMilliseconds() % 200)
