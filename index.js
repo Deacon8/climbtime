@@ -47,6 +47,9 @@ const TimeEvent = class {
 const timeEvents = [
 	new TimeEvent(1000, (timeLeft) => {
 		console.log(`Time left: ${timeLeft}`)
+	}),
+	new TimeEvent(0, () => {
+		console.log("About to reset")
 	})
 ]
 
