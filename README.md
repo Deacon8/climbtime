@@ -6,4 +6,3 @@ whose coding prowess and technical know how were paramout in the creation of thi
 # TODOs
  - Fix time slipping issue - index.js
  - More responsiveness
- - License
