@@ -62,14 +62,13 @@ const main = () => {
 
 	let isRunning = false
 
-	let triggerStart = false
 
 	const start = () => {
 		timeEvents.forEach(timeEvent => {
 			timeEvent.reset()
 		})
 
-		triggerStart = true
+		startDate = Date.now()
 
 		isRunning = true
 	}
