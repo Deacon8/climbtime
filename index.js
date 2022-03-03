@@ -1,11 +1,18 @@
  
 // The timer isn't 100% accurate, can swing +/-4ms
-// TODO loses time somehow?
 
-const MINUTES = 0
-const SECONDS = 10
+const MINUTES = 1
+const SECONDS = 1
 
-const CYCLE_MS = (MINUTES * 60 + SECONDS) * 1000
+const calcMs = (minutes, seconds) => (minutes * 60 + seconds) * 1000
+
+const CYCLE_MS = calcMs(MINUTES, SECONDS)
+
+const playSound = url => {
+	const a = new Audio(url)
+
+	a.play()
+}
 
 // Simple event that calls a function if the time needed has expired
 const TimeEvent = class {
@@ -55,6 +62,10 @@ const timeEvents = [
 	new TimeEvent(0, () => {
 		console.log("About to reset")
 	})*/
+
+	new TimeEvent(calcMs(1, 1), () => {
+		playSound('sounds/1min.mp3')
+	})
 ]
 
 const main = () => {
