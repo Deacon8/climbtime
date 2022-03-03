@@ -90,13 +90,6 @@ const main = () => {
 	// Meat and potatoes function runs every 200ms,
 	// updates the timer and checks that it hasn't stopped
 	setInterval(() => {	
-		// Normalise start time to 200ms
-		if (triggerStart) {
-			startDate = Date.now()
-
-			triggerStart = false
-		}
-
 		// Get the time left in the cycle if running, or reset if stopped	
 		const timeLeft = () => {
 			if (isRunning) {
@@ -114,18 +107,6 @@ const main = () => {
 		})
 
 		left = timeLeft()
-
-		// Check that the timer hasn't expired
-		if (left <= 0) {
-			// Automatically restart
-			start()
-
-			console.log(`Resetting timer at ${Date.now()}ms`)
-
-			return
-		}	
-
-		left = timeLeft()
 				
 		// Format as date to get helper functions
 		const dateLeft = new Date(left)
@@ -139,6 +120,13 @@ const main = () => {
 
 		timerText.textContent = timerContent
 	}, 200)
+	
+	// Automatically reset timer
+	setInterval(() => {
+		if (isRunning) {
+			start()
+		}
+	}, CYCLE_MS)
 }
 
 // Very precise timing because why not
