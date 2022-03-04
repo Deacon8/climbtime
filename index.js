@@ -69,7 +69,27 @@ const timeEvents = [
 
 	new TimeEvent(calcMs(0, 0), () => {
 		playSound('sounds/Finish.mp3')
-	})
+	}),
+
+	new TimeEvent(calcMs(0, 5), () => {
+		playSound('sounds/54331.mp3')
+	}),
+
+	new TimeEvent(calcMs(0, 4), () => {
+		playSound('sounds/54321.mp3')
+	}),
+
+	new TimeEvent(calcMs(0, 3), () => {
+		playSound('sounds/54321.mp3')
+	}),
+
+	new TimeEvent(calcMs(0, 2), () => {
+		playSound('sounds/54321.mp3')
+	}),
+
+	new TimeEvent(calcMs(0, 1), () => {
+		playSound('sounds/54321.mp3')
+	}),
 ]
 
 const main = () => {
@@ -115,6 +135,8 @@ const main = () => {
 
 	stopBtn.addEventListener('click', () => {
 		isRunning = false
+
+		clearInterval(resetInterval)
 	})
 	
 	// Meat and potatoes function runs every 200ms,
