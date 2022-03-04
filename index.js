@@ -71,8 +71,16 @@ const timeEvents = [
 		playSound('sounds/Finish.mp3')
 	}),
 
-	new TimeEvent(calcMs(0, 5), () => {
+	new TimeEvent(calcMs(0, 7), () => {
 		playSound('sounds/54331.mp3')
+	}),
+
+	new TimeEvent(calcMs(0, 6), () => {
+		playSound('sounds/54321.mp3')
+	}),
+
+	new TimeEvent(calcMs(0, 5), () => {
+		playSound('sounds/54321.mp3')
 	}),
 
 	new TimeEvent(calcMs(0, 4), () => {
@@ -80,14 +88,6 @@ const timeEvents = [
 	}),
 
 	new TimeEvent(calcMs(0, 3), () => {
-		playSound('sounds/54321.mp3')
-	}),
-
-	new TimeEvent(calcMs(0, 2), () => {
-		playSound('sounds/54321.mp3')
-	}),
-
-	new TimeEvent(calcMs(0, 1), () => {
 		playSound('sounds/54321.mp3')
 	}),
 ]
