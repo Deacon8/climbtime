@@ -65,6 +65,10 @@ const timeEvents = [
 
 	new TimeEvent(calcMs(1, 1), () => {
 		playSound('sounds/1min.mp3')
+	}),
+
+	new timeEvent(calcMs(0, 0), () => {
+		playSound('sounds/finish.mp3')
 	})
 ]
 
