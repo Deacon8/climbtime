@@ -2,7 +2,7 @@
 // The timer isn't 100% accurate, can swing +/-4ms
 
 const MINUTES = 0
-const SECONDS = 30
+const SECONDS = 10
 
 const calcMs = (minutes, seconds) => (minutes * 60 + seconds) * 1000
 
