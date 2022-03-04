@@ -1,8 +1,8 @@
  
 // The timer isn't 100% accurate, can swing +/-4ms
 
-const MINUTES = 1
-const SECONDS = 1
+const MINUTES = 0
+const SECONDS = 30
 
 const calcMs = (minutes, seconds) => (minutes * 60 + seconds) * 1000
 
@@ -65,6 +65,10 @@ const timeEvents = [
 
 	new TimeEvent(calcMs(1, 1), () => {
 		playSound('sounds/1min.mp3')
+	}),
+
+	new TimeEvent(calcMs(0, 0), () => {
+		playSound('sounds/Finish.mp3')
 	})
 ]
 
@@ -73,6 +77,7 @@ const main = () => {
 
 	let isRunning = false
 
+	let resetInterval = undefined
 
 	const start = () => {
 		timeEvents.forEach(timeEvent => {
@@ -90,7 +95,22 @@ const main = () => {
 	const timerText = document.querySelector('#timer')
 
 	startBtn.addEventListener('click', () => {
+		clearInterval(resetInterval)
+
 		start()
+
+		// Automatically reset timer
+		resetInterval = setInterval(() => {
+			if (isRunning) {
+				// why tf does this work`
+				start()
+
+				timeEvents.forEach(timeEvent => {
+					timeEvent.fire(0)
+				})
+			}
+		}, CYCLE_MS)
+
 	})
 
 	stopBtn.addEventListener('click', () => {
@@ -131,12 +151,6 @@ const main = () => {
 		timerText.textContent = timerContent
 	}, 200)
 	
-	// Automatically reset timer
-	setInterval(() => {
-		if (isRunning) {
-			start()
-		}
-	}, CYCLE_MS)
 }
 
 // Very precise timing because why not
