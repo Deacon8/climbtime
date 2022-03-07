@@ -63,12 +63,16 @@ const timeEvents = [
 		console.log("About to reset")
 	})*/
 
-	new TimeEvent(calcMs(1, 1.1), () => {
+	new TimeEvent(calcMs(1, 1), () => {
 		playSound('sounds/1min.mp3')
 	}),
 
-	new TimeEvent(calcMs(0, 0.5), () => {
+	new TimeEvent(calcMs(0, 0), () => {
 		playSound('sounds/Finish.mp3')
+	}),
+
+	new TimeEvent(calcMs(0, 7), () => {
+		playSound('sounds/54331.mp3')
 	}),
 
 	new TimeEvent(calcMs(0, 6), () => {
@@ -84,10 +88,6 @@ const timeEvents = [
 	}),
 
 	new TimeEvent(calcMs(0, 3), () => {
-		playSound('sounds/54321.mp3')
-	}),
-
-	new TimeEvent(calcMs(0, 2), () => {
 		playSound('sounds/54321.mp3')
 	}),
 ]
@@ -122,13 +122,12 @@ const main = () => {
 		// Automatically reset timer
 		resetInterval = setInterval(() => {
 			if (isRunning) {
-				timeEvents.forEach(timeEvent => {
-					timeEvent.fire(0)
-				})
-				
 				// why tf does this work`
 				start()
 
+				timeEvents.forEach(timeEvent => {
+					timeEvent.fire(0)
+				})
 			}
 		}, CYCLE_MS)
 
