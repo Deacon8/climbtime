@@ -8,6 +8,9 @@ const calcMs = (minutes, seconds) => (minutes * 60 + seconds) * 1000
 
 const CYCLE_MS = calcMs(MINUTES, SECONDS)
 
+var TimeAdd = 0;
+var isPaused = false;
+
 const playSound = url => {
 	const a = new Audio(url)
 
@@ -63,12 +66,16 @@ const timeEvents = [
 		console.log("About to reset")
 	})*/
 
-	new TimeEvent(calcMs(1, 1.1), () => {
+	new TimeEvent(calcMs(1, 1), () => {
 		playSound('sounds/1min.mp3')
 	}),
 
-	new TimeEvent(calcMs(0, 0.5), () => {
+	new TimeEvent(calcMs(0, 0), () => {
 		playSound('sounds/Finish.mp3')
+	}),
+
+	new TimeEvent(calcMs(0, 7), () => {
+		playSound('sounds/54331.mp3')
 	}),
 
 	new TimeEvent(calcMs(0, 6), () => {
@@ -86,17 +93,17 @@ const timeEvents = [
 	new TimeEvent(calcMs(0, 3), () => {
 		playSound('sounds/54321.mp3')
 	}),
-
-	new TimeEvent(calcMs(0, 2), () => {
-		playSound('sounds/54321.mp3')
-	}),
 ]
 
 const main = () => {
+	// Date started
 	let startDate
-	let wasPaused
+	// Paused time stored
+	let pauseTime
 
+	// Timer is running
 	let isRunning = false
+	// Timer is/was paused
 	let wasPaused = false
 
 	let resetInterval = undefined
@@ -114,9 +121,11 @@ const main = () => {
 	const pause = () => {
 		wasPaused = true
 
-		timePassed = Date.now() - startTime
+		isRunning = false
 
-		resetInterval(resetInterval)
+		pauseTime = Date.now() - startDate
+
+		clearInterval(resetInterval)
 	}
 
 	const reset = () => {
@@ -125,9 +134,8 @@ const main = () => {
 				timeEvent.fire(0)
 			})
 			
-			// why tf does this work`
+			// why tf does this work
 			start()
-
 		}
 	}
 
@@ -139,25 +147,36 @@ const main = () => {
 
 	startBtn.addEventListener('click', () => {
 		if (wasPaused) {
-			const timeLeft = CYCLE_MS - resetTime
+			const timeLeft = CYCLE_MS - pauseTime
+
+			startDate = Date.now() - pauseTime
 
 			setTimeout(() => {
 				reset()
 
 				resetInterval = setInterval(reset, CYCLE_MS)
 			}, timeLeft)
+
+			wasPaused = false
+
+			isRunning = true
 		} else {
 			clearInterval(resetInterval)
 
 			start()
-
 			// Automatically reset timer
 			resetInterval = setInterval(reset, CYCLE_MS)
 		}
 	})
+	
+	pauseBtn.addEventListener('click', () => {
+		pause()
+	})
 
 	stopBtn.addEventListener('click', () => {
 		isRunning = false
+
+		wasPaused = false
 
 		clearInterval(resetInterval)
 	})
@@ -176,7 +195,7 @@ const main = () => {
 			}
 		}
 
-		let left = timeLeft()
+		let left = timeLeft() + TimeAdd
 
 		// Is slow but works enough
 		timeEvents.forEach(timeEvent => {
