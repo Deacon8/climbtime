@@ -7,7 +7,7 @@
 }
 
 /*
-@media (min-width: 600px) and (orientation: landscape) {
+@media (max-width: 1000px) {
 	#timer {
 		font-size: 40vw !important;
 	}
@@ -15,7 +15,7 @@
 */
 
 #timer {
-	font-size: 50vh;
+	font-size: 50vmin;
 
 	text-align: center;
 
