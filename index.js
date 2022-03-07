@@ -8,6 +8,9 @@ const calcMs = (minutes, seconds) => (minutes * 60 + seconds) * 1000
 
 const CYCLE_MS = calcMs(MINUTES, SECONDS)
 
+var TimeAdd = 0;
+var isPaused = false;
+
 const playSound = url => {
 	const a = new Audio(url)
 
@@ -111,7 +114,7 @@ const main = () => {
 
 	const startBtn = document.querySelector('#start')
 	const stopBtn = document.querySelector('#stop')
-
+	const pauseBtn = document.querySelector('#pause')
 	const timerText = document.querySelector('#timer')
 
 	startBtn.addEventListener('click', () => {
@@ -132,6 +135,18 @@ const main = () => {
 		}, CYCLE_MS)
 
 	})
+	
+	pauseBtn.addEventListener('click', () => {
+		if(isPaused)
+		{
+			
+		}
+		else
+		{
+			startTime = Date.now()
+		}
+		isPaused = !isPaused;
+	})
 
 	stopBtn.addEventListener('click', () => {
 		isRunning = false
@@ -151,7 +166,7 @@ const main = () => {
 			}
 		}
 
-		let left = timeLeft()
+		let left = timeLeft() + TimeAdd
 
 		// Is slow but works enough
 		timeEvents.forEach(timeEvent => {
