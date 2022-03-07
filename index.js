@@ -94,8 +94,10 @@ const timeEvents = [
 
 const main = () => {
 	let startDate
+	let wasPaused
 
 	let isRunning = false
+	let wasPaused = false
 
 	let resetInterval = undefined
 
@@ -109,29 +111,49 @@ const main = () => {
 		isRunning = true
 	}
 
+	const pause = () => {
+		wasPaused = true
+
+		timePassed = Date.now() - startTime
+
+		resetInterval(resetInterval)
+	}
+
+	const reset = () => {
+		if (isRunning) {
+			timeEvents.forEach(timeEvent => {
+				timeEvent.fire(0)
+			})
+			
+			// why tf does this work`
+			start()
+
+		}
+	}
+
 	const startBtn = document.querySelector('#start')
 	const stopBtn = document.querySelector('#stop')
+	const pauseBtn = document.querySelector('#pause')
 
 	const timerText = document.querySelector('#timer')
 
 	startBtn.addEventListener('click', () => {
-		clearInterval(resetInterval)
+		if (wasPaused) {
+			const timeLeft = CYCLE_MS - resetTime
 
-		start()
+			setTimeout(() => {
+				reset()
 
-		// Automatically reset timer
-		resetInterval = setInterval(() => {
-			if (isRunning) {
-				timeEvents.forEach(timeEvent => {
-					timeEvent.fire(0)
-				})
-				
-				// why tf does this work`
-				start()
+				resetInterval = setInterval(reset, CYCLE_MS)
+			}, timeLeft)
+		} else {
+			clearInterval(resetInterval)
 
-			}
-		}, CYCLE_MS)
+			start()
 
+			// Automatically reset timer
+			resetInterval = setInterval(reset, CYCLE_MS)
+		}
 	})
 
 	stopBtn.addEventListener('click', () => {
@@ -147,6 +169,8 @@ const main = () => {
 		const timeLeft = () => {
 			if (isRunning) {
 				return startDate + CYCLE_MS - Date.now()
+			} else if (wasPaused) {
+				return CYCLE_MS - pauseTime
 			} else {
 				return CYCLE_MS
 			}
