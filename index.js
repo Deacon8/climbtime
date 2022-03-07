@@ -67,12 +67,8 @@ const timeEvents = [
 		playSound('sounds/1min.mp3')
 	}),
 
-	new TimeEvent(calcMs(0, 0), () => {
+	new TimeEvent(calcMs(0, 0.5), () => {
 		playSound('sounds/Finish.mp3')
-	}),
-
-	new TimeEvent(calcMs(0, 7), () => {
-		playSound('sounds/54331.mp3')
 	}),
 
 	new TimeEvent(calcMs(0, 6), () => {
@@ -88,6 +84,10 @@ const timeEvents = [
 	}),
 
 	new TimeEvent(calcMs(0, 3), () => {
+		playSound('sounds/54321.mp3')
+	}),
+
+	new TimeEvent(calcMs(0, 2), () => {
 		playSound('sounds/54321.mp3')
 	}),
 ]
@@ -122,12 +122,13 @@ const main = () => {
 		// Automatically reset timer
 		resetInterval = setInterval(() => {
 			if (isRunning) {
-				// why tf does this work`
-				start()
-
 				timeEvents.forEach(timeEvent => {
 					timeEvent.fire(0)
 				})
+				
+				// why tf does this work`
+				start()
+
 			}
 		}, CYCLE_MS)
 
