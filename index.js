@@ -119,6 +119,8 @@ const main = () => {
 	}
 
 	const pause = () => {
+		if (wasPaused) return
+
 		wasPaused = true
 
 		isRunning = false
