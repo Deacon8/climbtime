@@ -19,14 +19,20 @@
 	{
 		overflow-y: hidden;
 	}
+	/*
 	#buttons {
 		visibility: hidden;
 	}
 	p{
 		visibility: hidden;
 	}
+	*/
 	#timer {
 		font-size: 80vmin !important;
+	}
+
+	#hide-fs {
+		visibility: hidden;
 	}
 }
 
@@ -39,7 +45,7 @@
 	margin: 0;
 }
 
-p {
+.text-center {
 	text-align: center;
 }
 
