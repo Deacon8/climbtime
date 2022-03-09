@@ -208,6 +208,12 @@ const main = () => {
 		})
 
 		left = timeLeft()
+
+		console.log(left)
+
+		// Skip 59:59 visually
+		if (left < 0)
+			left = 0
 				
 		// Format as date to get helper functions
 		const dateLeft = new Date(left)
