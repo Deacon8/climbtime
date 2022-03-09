@@ -75,7 +75,7 @@ let timeEvents = [
 		playSound('sounds/54321.mp3')
 	}),
 
-	new TimeEvent(calcMs(2, 5), () => {
+	new TimeEvent(calcMs(0, 5), () => {
 		playSound('sounds/54321.mp3')
 	}),
 
@@ -93,7 +93,7 @@ let timeEvents = [
 ]
 
 if (MINUTES >= 5) {
-	timeEvents.push(new TimeEvent(calcMs(5, 0), () => {
+	timeEvents.push(new TimeEvent(calcMs(5, 2), () => {
 		playSound('sounds/1min.mp3')
 	}))
 }
