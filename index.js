@@ -92,7 +92,7 @@ let timeEvents = [
 	}),
 ]
 
-if (min >= 5 && sec > 5) {
+if (MINUTES >= 5 && SECONDS > 5) {
 	timeEvents.push(new TimeEvent(calcMs(5, 1.9), () => {
 		playSound('sounds/1min.mp3')
 	}))
