@@ -70,7 +70,7 @@ const timeEvents = [
 		playSound('sounds/1min.mp3')
 	}),
 
-	new TimeEvent(calcMs(0, 0), () => {
+	new TimeEvent(calcMs(0, 0.5), () => {
 		playSound('sounds/Finish.mp3')
 	}),
 
