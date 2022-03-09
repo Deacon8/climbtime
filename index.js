@@ -68,7 +68,7 @@ let timeEvents = [
 	}),
 
 	new TimeEvent(calcMs(0, 0.5), () => {
-		playSound('sounds/Finish.mp3')
+		playSound('sounds/finish.mp3')
 	}),
 
 	new TimeEvent(calcMs(0, 6), () => {
