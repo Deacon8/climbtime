@@ -51,7 +51,7 @@ const TimeEvent = class {
 }
 
 // Global list of TimeEvents
-const timeEvents = [
+let timeEvents = [
 	/*
 	// Example of TimeEvent working near 1000ms
 	new TimeEvent(1000, (timeLeft) => {
@@ -91,6 +91,12 @@ const timeEvents = [
 		playSound('sounds/54321.mp3')
 	}),
 ]
+
+if (MINUTES >= 5) {
+	timeEvents.push(new TimeEvent(calcMs(5, 0), () => {
+		playSound('sounds/1min.mp3')
+	}))
+}
 
 const main = () => {
 	// Date started
