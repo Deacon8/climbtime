@@ -63,7 +63,7 @@ let timeEvents = [
 		console.log("About to reset")
 	})*/
 
-	new TimeEvent(calcMs(1, 1), () => {
+	new TimeEvent(calcMs(1, 2), () => {
 		playSound('sounds/1min.mp3')
 	}),
 
