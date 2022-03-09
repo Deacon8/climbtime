@@ -1,8 +1,8 @@
  
 // The timer isn't 100% accurate, can swing +/-4ms
 
-const MINUTES = 5
-const SECONDS = 0
+const MINUTES = 0
+const SECONDS = 10
 
 const calcMs = (minutes, seconds) => (minutes * 60 + seconds) * 1000
 
@@ -74,10 +74,6 @@ const timeEvents = [
 		playSound('sounds/Finish.mp3')
 	}),
 
-	new TimeEvent(calcMs(0, 7), () => {
-		playSound('sounds/54331.mp3')
-	}),
-
 	new TimeEvent(calcMs(0, 6), () => {
 		playSound('sounds/54321.mp3')
 	}),
@@ -91,6 +87,10 @@ const timeEvents = [
 	}),
 
 	new TimeEvent(calcMs(0, 3), () => {
+		playSound('sounds/54321.mp3')
+	}),
+
+	new TimeEvent(calcMs(0, 2), () => {
 		playSound('sounds/54321.mp3')
 	}),
 ]
