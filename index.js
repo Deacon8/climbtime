@@ -209,7 +209,7 @@ const main = () => {
 
 		left = timeLeft()
 
-		console.log(left)
+		//console.log(left)
 
 		// Skip 59:59 visually
 		if (left < 0)
